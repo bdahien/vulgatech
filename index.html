@@ -1,0 +1,1446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="VulgaTECH Afrique - Vulgariser les TIC, promouvoir l'éducation numérique, l'efficacité énergétique solaire et la conservation des récoltes en zones rurales">
+    <title>VulgaTECH Afrique - Connecter, Éclairer, Conserver</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        /* Header */
+        .header {
+            background: linear-gradient(135deg, #2c5530 0%, #3d7a3f 100%);
+            color: white;
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo-icon {
+            font-size: 40px;
+        }
+        
+        .logo-text h1 {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        
+        .logo-text p {
+            font-size: 12px;
+            opacity: 0.9;
+        }
+        
+        .nav {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+        
+        .nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav a:hover {
+            color: #ffd700;
+        }
+        
+        .btn-donate {
+            background: #ff6b35;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-weight: bold;
+        }
+        
+        .btn-donate:hover {
+            background: #ff5722;
+            color: white !important;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(44,85,48,0.95), rgba(61,122,63,0.95)),
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%232c5530" width="1200" height="600"/><circle fill="%23ffd700" cx="300" cy="200" r="80" opacity="0.3"/><circle fill="%23ff6b35" cx="900" cy="400" r="100" opacity="0.2"/><path d="M0,300 Q300,250 600,300 T1200,300" stroke="%233d7a3f" stroke-width="3" fill="none" opacity="0.3"/></svg>');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+        }
+        
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+        
+        .hero .tagline {
+            font-size: 24px;
+            margin-bottom: 30px;
+            opacity: 0.95;
+            font-weight: 300;
+        }
+        
+        .hero .mission {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            font-size: 18px;
+            line-height: 1.8;
+            background: rgba(255,255,255,0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 15px 35px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+        
+        .btn-primary {
+            background: #ff6b35;
+            color: white;
+        }
+        
+        .btn-primary:hover {
+            background: #ff5722;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(255,107,53,0.4);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+        
+        .btn-secondary:hover {
+            background: white;
+            color: #2c5530;
+        }
+        
+        /* Pillars Section */
+        .pillars {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            color: #2c5530;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 18px;
+            color: #666;
+            margin-bottom: 50px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .pillars-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
+        }
+        
+        .pillar-card {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 30px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border-top: 5px solid #2c5530;
+        }
+        
+        .pillar-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .pillar-icon {
+            font-size: 80px;
+            margin-bottom: 20px;
+        }
+        
+        .pillar-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #2c5530;
+        }
+        
+        .pillar-card p {
+            color: #666;
+            font-size: 16px;
+            line-height: 1.8;
+        }
+        
+        .pillar-card ul {
+            text-align: left;
+            margin-top: 20px;
+            list-style: none;
+        }
+        
+        .pillar-card li {
+            padding: 8px 0;
+            color: #555;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .pillar-card li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #3d7a3f;
+            font-weight: bold;
+            font-size: 18px;
+        }
+        
+        /* Impact Section */
+        .impact {
+            background: linear-gradient(135deg, #2c5530 0%, #3d7a3f 100%);
+            color: white;
+            padding: 80px 20px;
+        }
+        
+        .impact-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            text-align: center;
+        }
+        
+        .impact-item h3 {
+            font-size: 56px;
+            color: #ffd700;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+        
+        .impact-item p {
+            font-size: 18px;
+            opacity: 0.95;
+        }
+        
+        /* How it Works */
+        .how-it-works {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+        }
+        
+        .steps-grid {
+            display: grid;
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .step {
+            display: grid;
+            grid-template-columns: 80px 1fr;
+            gap: 30px;
+            align-items: start;
+            padding: 30px;
+            background: #f8f9fa;
+            border-radius: 15px;
+            border-left: 5px solid #3d7a3f;
+        }
+        
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #2c5530, #3d7a3f);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            font-weight: bold;
+        }
+        
+        .step-content h3 {
+            color: #2c5530;
+            margin-bottom: 10px;
+            font-size: 22px;
+        }
+        
+        .step-content p {
+            color: #666;
+            line-height: 1.8;
+        }
+        
+        /* Villages Section */
+        .villages {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+        
+        .villages-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .village-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .village-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .village-name {
+            font-size: 24px;
+            color: #2c5530;
+            font-weight: bold;
+        }
+        
+        .village-status {
+            background: #3d7a3f;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .village-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stat {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            color: #3d7a3f;
+            font-weight: bold;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+        }
+        
+        /* Shop Section */
+        .shop {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+        
+        .shop-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .shop-categories {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+        
+        .category-tab {
+            background: white;
+            padding: 20px 40px;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            border: 3px solid transparent;
+        }
+        
+        .category-tab:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+        
+        .category-tab.active {
+            background: linear-gradient(135deg, #2c5530, #3d7a3f);
+            color: white;
+            border-color: #ffd700;
+        }
+        
+        .tab-icon {
+            font-size: 24px;
+        }
+        
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+        
+        .product-card {
+            background: white;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .product-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #ff6b35;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .product-image {
+            font-size: 80px;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .product-card h3 {
+            color: #2c5530;
+            margin-bottom: 15px;
+            font-size: 20px;
+            text-align: center;
+        }
+        
+        .product-desc {
+            color: #666;
+            font-size: 14px;
+            line-height: 1.6;
+            text-align: center;
+            flex-grow: 1;
+            margin-bottom: 20px;
+        }
+        
+        .product-price {
+            text-align: center;
+            margin: 20px 0;
+            padding: 20px 0;
+            border-top: 2px dashed #e0e0e0;
+            border-bottom: 2px dashed #e0e0e0;
+        }
+        
+        .price-label {
+            display: block;
+            font-size: 12px;
+            color: #999;
+            margin-bottom: 5px;
+        }
+        
+        .price {
+            display: block;
+            font-size: 28px;
+            color: #2c5530;
+            font-weight: bold;
+        }
+        
+        .btn-product {
+            background: #3d7a3f;
+            color: white;
+            padding: 12px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: block;
+        }
+        
+        .btn-product:hover {
+            background: #2c5530;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44,85,48,0.3);
+        }
+        
+        .shop-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 60px 0;
+        }
+        
+        .info-card {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .info-icon {
+            font-size: 48px;
+            margin-bottom: 15px;
+        }
+        
+        .info-card h4 {
+            color: #2c5530;
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+        
+        .info-card p {
+            color: #666;
+            font-size: 14px;
+        }
+        
+        .shop-cta {
+            background: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-top: 40px;
+        }
+        
+        .shop-cta h3 {
+            color: #2c5530;
+            font-size: 32px;
+            margin-bottom: 15px;
+        }
+        
+        .shop-cta p {
+            color: #666;
+            font-size: 18px;
+            margin-bottom: 30px;
+        }
+        
+        .contact-methods {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .contact-btn {
+            background: linear-gradient(135deg, #2c5530, #3d7a3f);
+            color: white;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .contact-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(44,85,48,0.3);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #ff6b35, #ff5722);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+        
+        .cta-section h2 {
+            font-size: 42px;
+            margin-bottom: 20px;
+        }
+        
+        .cta-section p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+        
+        /* Partners */
+        .partners {
+            max-width: 1200px;
+            margin: 80px auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+        
+        .partners-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .partner-logo {
+            padding: 20px;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+            font-size: 14px;
+            color: #666;
+            font-weight: bold;
+        }
+        
+        /* Contact Section */
+        .contact {
+            background: #f8f9fa;
+            padding: 80px 20px;
+        }
+        
+        .contact-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+        
+        .contact-info h3 {
+            color: #2c5530;
+            margin-bottom: 30px;
+            font-size: 28px;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: start;
+            gap: 15px;
+            margin-bottom: 25px;
+        }
+        
+        .contact-icon {
+            font-size: 24px;
+            color: #3d7a3f;
+        }
+        
+        .contact-details h4 {
+            color: #2c5530;
+            margin-bottom: 5px;
+        }
+        
+        .contact-details p {
+            color: #666;
+        }
+        
+        .contact-form {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #2c5530;
+            font-weight: 500;
+        }
+        
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: inherit;
+            transition: border-color 0.3s;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3d7a3f;
+        }
+        
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+        
+        .btn-submit {
+            background: #3d7a3f;
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-submit:hover {
+            background: #2c5530;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44,85,48,0.3);
+        }
+        
+        /* Footer */
+        .footer {
+            background: #1a3a1d;
+            color: white;
+            padding: 60px 20px 30px;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            color: #ffd700;
+            margin-bottom: 20px;
+            font-size: 20px;
+        }
+        
+        .footer-section p,
+        .footer-section a {
+            color: #bdc3c7;
+            text-decoration: none;
+            line-height: 2;
+        }
+        
+        .footer-section a:hover {
+            color: #ffd700;
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #bdc3c7;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: #ffd700;
+            color: #1a3a1d;
+        }
+        
+        @media (max-width: 768px) {
+            .hero h2 {
+                font-size: 32px;
+            }
+            
+            .hero .tagline {
+                font-size: 18px;
+            }
+            
+            .nav {
+                display: none;
+            }
+            
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .step {
+                grid-template-columns: 1fr;
+            }
+            
+            .step-number {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo">
+                <div class="logo-icon">🌍</div>
+                <div class="logo-text">
+                    <h1>VulgaTECH Afrique</h1>
+                    <p>Connecter • Éclairer • Conserver</p>
+                </div>
+            </div>
+            <nav class="nav">
+                <a href="#accueil">Accueil</a>
+                <a href="#mission">Notre Mission</a>
+                <a href="#impact">Impact</a>
+                <a href="#villages">Villages</a>
+                <a href="#boutique">Boutique Solidaire</a>
+                <a href="#contact">Contact</a>
+                <a href="#don" class="btn-donate">Faire un Don</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="accueil">
+        <h2>Transformer l'Afrique Rurale<br/>par le Numérique et l'Énergie Solaire</h2>
+        <p class="tagline">Connecter • Éclairer • Conserver</p>
+        
+        <div class="mission">
+            <strong>Notre Mission :</strong><br/>
+            Vulgariser les TIC pour promouvoir l'éducation numérique populaire, par l'efficacité énergétique solaire, pour soutenir la conservation des récoltes agricoles par les chambres froides en zones rurales et campagnes.
+        </div>
+        
+        <div class="hero-buttons">
+            <a href="#mission" class="btn btn-primary">Découvrir Notre Action</a>
+            <a href="#contact" class="btn btn-secondary">Nous Rejoindre</a>
+        </div>
+    </section>
+
+    <!-- Impact Stats -->
+    <section class="impact" id="impact">
+        <div class="impact-grid">
+            <div class="impact-item">
+                <h3>30</h3>
+                <p>Villages Ciblés</p>
+            </div>
+            <div class="impact-item">
+                <h3>50K+</h3>
+                <p>Bénéficiaires</p>
+            </div>
+            <div class="impact-item">
+                <h3>3000</h3>
+                <p>Agriculteurs Formés</p>
+            </div>
+            <div class="impact-item">
+                <h3>30%</h3>
+                <p>Pertes Réduites</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Three Pillars -->
+    <section class="pillars" id="mission">
+        <h2 class="section-title">Nos Trois Piliers d'Action</h2>
+        <p class="section-subtitle">
+            Une approche intégrée unique combinant technologie, énergie et agriculture pour un développement durable
+        </p>
+        
+        <div class="pillars-grid">
+            <div class="pillar-card">
+                <div class="pillar-icon">💻</div>
+                <h3>TIC & Éducation Numérique</h3>
+                <p>Démocratiser l'accès aux technologies de l'information pour l'éducation populaire</p>
+                <ul>
+                    <li>Alphabétisation numérique</li>
+                    <li>Points d'accès WiFi communautaires</li>
+                    <li>Formation e-commerce agricole</li>
+                    <li>Plateforme d'apprentissage en ligne</li>
+                </ul>
+            </div>
+            
+            <div class="pillar-card">
+                <div class="pillar-icon">☀️</div>
+                <h3>Efficacité Énergétique Solaire</h3>
+                <p>Apporter l'électricité propre et durable aux zones rurales non électrifiées</p>
+                <ul>
+                    <li>Mini-centrales solaires villageoises</li>
+                    <li>Kits solaires domestiques</li>
+                    <li>Éclairage public solaire</li>
+                    <li>Formation mainteneurs locaux</li>
+                </ul>
+            </div>
+            
+            <div class="pillar-card">
+                <div class="pillar-icon">❄️</div>
+                <h3>Chaîne de Froid Agricole</h3>
+                <p>Réduire les pertes post-récolte par des solutions de conservation innovantes</p>
+                <ul>
+                    <li>Chambres froides solaires</li>
+                    <li>Formation conservation produits</li>
+                    <li>Gestion coopératives agricoles</li>
+                    <li>Accès aux marchés urbains</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it Works -->
+    <section class="how-it-works">
+        <h2 class="section-title">Comment Ça Marche ?</h2>
+        <p class="section-subtitle">
+            Un processus en 5 étapes pour transformer durablement les villages ruraux
+        </p>
+        
+        <div class="steps-grid">
+            <div class="step">
+                <div class="step-number">1</div>
+                <div class="step-content">
+                    <h3>Identification & Diagnostic</h3>
+                    <p>Sélection des villages partenaires et évaluation des besoins spécifiques en concertation avec les communautés locales.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">2</div>
+                <div class="step-content">
+                    <h3>Installation Infrastructures</h3>
+                    <p>Déploiement des équipements : mini-centrales solaires, points d'accès internet, et construction des chambres froides.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">3</div>
+                <div class="step-content">
+                    <h3>Formation Communautaire</h3>
+                    <p>Alphabétisation numérique, formation conservation agricole, et création de coopératives villageoises autonomes.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">4</div>
+                <div class="step-content">
+                    <h3>Accompagnement & Suivi</h3>
+                    <p>Support technique continu, maintenance préventive, et suivi de l'impact socio-économique sur les bénéficiaires.</p>
+                </div>
+            </div>
+            
+            <div class="step">
+                <div class="step-number">5</div>
+                <div class="step-content">
+                    <h3>Autonomisation</h3>
+                    <p>Transfert progressif de la gestion aux communautés pour une durabilité à long terme et un modèle réplicable.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Villages Section -->
+    <section class="villages" id="villages">
+        <div class="villages-container">
+            <h2 class="section-title">Nos Villages Partenaires</h2>
+            <p class="section-subtitle">
+                Découvrez l'impact concret de notre action dans les communautés rurales
+            </p>
+            
+            <div class="village-card">
+                <div class="village-header">
+                    <div class="village-name">🌾 Village Pilote - En cours</div>
+                    <div class="village-status">Phase de démarrage</div>
+                </div>
+                <p>Premier village témoin où nous testons et validons notre modèle d'intervention intégrée.</p>
+                <div class="village-stats">
+                    <div class="stat">
+                        <div class="stat-number">1</div>
+                        <div class="stat-label">Point WiFi</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">1kW</div>
+                        <div class="stat-label">Solaire installé</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500</div>
+                        <div class="stat-label">Bénéficiaires</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">50</div>
+                        <div class="stat-label">Agriculteurs formés</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="village-card" style="opacity: 0.7;">
+                <div class="village-header">
+                    <div class="village-name">🌾 Villages Phase 1 (4 villages)</div>
+                    <div class="village-status" style="background: #999;">À venir - 2026</div>
+                </div>
+                <p>Extension du modèle validé à 4 villages supplémentaires avec équipements complets et formation renforcée.</p>
+            </div>
+            
+            <div class="village-card" style="opacity: 0.7;">
+                <div class="village-header">
+                    <div class="village-name">🌾 Villages Phase 2 (25 villages)</div>
+                    <div class="village-status" style="background: #999;">Planifié - 2027-2028</div>
+                </div>
+                <p>Déploiement à grande échelle avec 25 villages équipés pour un impact régional significatif.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Boutique Solidaire -->
+    <section class="shop" id="boutique">
+        <div class="shop-container">
+            <h2 class="section-title">Boutique Solidaire</h2>
+            <p class="section-subtitle">
+                Soutenez notre mission en acquérant du matériel de qualité reconditionné<br/>
+                100% des bénéfices financent nos projets dans les villages ruraux
+            </p>
+            
+            <div class="shop-categories">
+                <div class="category-tab active" onclick="showCategory('tic')">
+                    <span class="tab-icon">💻</span>
+                    <span>Matériel TIC</span>
+                </div>
+                <div class="category-tab" onclick="showCategory('solaire')">
+                    <span class="tab-icon">☀️</span>
+                    <span>Équipements Solaires</span>
+                </div>
+                <div class="category-tab" onclick="showCategory('froid')">
+                    <span class="tab-icon">❄️</span>
+                    <span>Matériel Froid</span>
+                </div>
+            </div>
+            
+            <!-- Catégorie TIC -->
+            <div class="products-grid category-content" id="tic-products">
+                <div class="product-card">
+                    <div class="product-badge">Reconditionné</div>
+                    <div class="product-image">💻</div>
+                    <h3>Ordinateurs Portables</h3>
+                    <p class="product-desc">Laptops reconditionnés, testés et garantis. Idéal pour bureautique et formation.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">75 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Demander Disponibilité</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Neuf</div>
+                    <div class="product-image">📱</div>
+                    <h3>Smartphones</h3>
+                    <p class="product-desc">Téléphones Android neufs et d'occasion. Formation numérique incluse.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">35 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Demander Disponibilité</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Occasion</div>
+                    <div class="product-image">🖨️</div>
+                    <h3>Imprimantes & Accessoires</h3>
+                    <p class="product-desc">Imprimantes multifonctions, toners, câbles et accessoires informatiques.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">45 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Demander Disponibilité</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Neuf</div>
+                    <div class="product-image">📡</div>
+                    <h3>Routeurs WiFi 4G</h3>
+                    <p class="product-desc">Routeurs professionnels pour connexion internet. Installation possible.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">55 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Demander Disponibilité</a>
+                </div>
+            </div>
+            
+            <!-- Catégorie Solaire -->
+            <div class="products-grid category-content" id="solaire-products" style="display: none;">
+                <div class="product-card">
+                    <div class="product-badge">Kit Complet</div>
+                    <div class="product-image">☀️</div>
+                    <h3>Kit Solaire Domestique 100W</h3>
+                    <p class="product-desc">Panneau 100W + batterie + onduleur + 3 lampes LED. Éclairage + recharge téléphones.</p>
+                    <div class="product-price">
+                        <span class="price-label">Prix solidaire</span>
+                        <span class="price">125 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Commander</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Kit Complet</div>
+                    <div class="product-image">🔆</div>
+                    <h3>Kit Solaire Domestique 300W</h3>
+                    <p class="product-desc">Panneau 300W + batterie lithium + onduleur. Alimentation TV, ventilateur, frigo.</p>
+                    <div class="product-price">
+                        <span class="price-label">Prix solidaire</span>
+                        <span class="price">350 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Commander</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Neuf</div>
+                    <div class="product-image">💡</div>
+                    <h3>Lampes Solaires LED</h3>
+                    <p class="product-desc">Lampes portables solaires rechargeables. Autonomie 8-12h. Garantie 2 ans.</p>
+                    <div class="product-price">
+                        <span class="price-label">Prix unitaire</span>
+                        <span class="price">8 500 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Commander</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Neuf</div>
+                    <div class="product-image">🔋</div>
+                    <h3>Batteries Lithium</h3>
+                    <p class="product-desc">Batteries de stockage 12V-200Ah. Longue durée de vie. Installation disponible.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">180 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Demander Devis</a>
+                </div>
+            </div>
+            
+            <!-- Catégorie Froid -->
+            <div class="products-grid category-content" id="froid-products" style="display: none;">
+                <div class="product-card">
+                    <div class="product-badge">Sur Mesure</div>
+                    <div class="product-image">❄️</div>
+                    <h3>Chambre Froide 10m³</h3>
+                    <p class="product-desc">Chambre froide positive (+2°C à +8°C) alimentée solaire. Installation clés en main.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">18 000 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Demander Devis</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Reconditionné</div>
+                    <div class="product-image">🧊</div>
+                    <h3>Congélateurs Solaires</h3>
+                    <p class="product-desc">Congélateurs 150-300L fonctionnant sur énergie solaire. Garantie 1 an.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">450 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Demander Disponibilité</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Neuf</div>
+                    <div class="product-image">🧰</div>
+                    <h3>Groupes Frigorifiques</h3>
+                    <p class="product-desc">Groupes froid monobloc 1-3kW. Installation formation & maintenance incluses.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">1 800 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Demander Devis</a>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-badge">Occasion</div>
+                    <div class="product-image">📦</div>
+                    <h3>Réfrigérateurs</h3>
+                    <p class="product-desc">Réfrigérateurs domestiques et professionnels. Testés et garantis 6 mois.</p>
+                    <div class="product-price">
+                        <span class="price-label">À partir de</span>
+                        <span class="price">85 000 FCFA</span>
+                    </div>
+                    <a href="#contact-boutique" class="btn-product">Voir Disponibilité</a>
+                </div>
+            </div>
+            
+            <div class="shop-info">
+                <div class="info-card">
+                    <div class="info-icon">✅</div>
+                    <h4>Garantie Qualité</h4>
+                    <p>Tous nos produits sont testés et garantis</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🔧</div>
+                    <h4>Installation & Formation</h4>
+                    <p>Support technique et formation inclus</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">💚</div>
+                    <h4>Impact Social</h4>
+                    <p>100% des bénéfices financent nos projets</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon">🚚</div>
+                    <h4>Livraison Possible</h4>
+                    <p>Livraison dans tout le Burkina Faso</p>
+                </div>
+            </div>
+            
+            <div class="shop-cta" id="contact-boutique">
+                <h3>Intéressé par nos produits ?</h3>
+                <p>Contactez-nous pour vérifier la disponibilité, obtenir un devis ou passer commande</p>
+                <div class="contact-methods">
+                    <a href="tel:+22670301313" class="contact-btn">
+                        <span>📞</span>
+                        <span>Appeler : +226 70 30 13 13</span>
+                    </a>
+                    <a href="https://wa.me/22670301313" class="contact-btn" target="_blank">
+                        <span>💬</span>
+                        <span>WhatsApp</span>
+                    </a>
+                    <a href="mailto:boutique@vulgatechafrique.org" class="contact-btn">
+                        <span>📧</span>
+                        <span>Email : boutique@vulgatechafrique.org</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="don">
+        <h2>Ensemble, Transformons l'Afrique Rurale</h2>
+        <p>Votre soutien peut changer la vie de milliers de familles</p>
+        <div class="hero-buttons">
+            <a href="#contact" class="btn btn-secondary">Faire un Don</a>
+            <a href="#contact" class="btn btn-secondary">Devenir Partenaire</a>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="partners">
+        <h2 class="section-title">Nos Partenaires</h2>
+        <p class="section-subtitle">
+            Nous collaborons avec des acteurs engagés pour maximiser notre impact
+        </p>
+        
+        <div class="partners-grid">
+            <div class="partner-logo">YAROH GROUP</div>
+            <div class="partner-logo">Partenaire Technique</div>
+            <div class="partner-logo">Fondations<br/>Internationales</div>
+            <div class="partner-logo">Bailleurs<br/>de Fonds</div>
+            <div class="partner-logo">ONG<br/>Partenaires</div>
+            <div class="partner-logo">Institutions<br/>Publiques</div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Contactez-Nous</h3>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📍</div>
+                    <div class="contact-details">
+                        <h4>Adresse</h4>
+                        <p>Ouagadougou, Burkina Faso</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📞</div>
+                    <div class="contact-details">
+                        <h4>Téléphone</h4>
+                        <p>+226 70 30 13 13</p>
+                        <p>+226 76 55 77 55</p>
+                    </div>
+                </div>
+                
+                <div class="contact-item">
+                    <div class="contact-icon">📧</div>
+                    <div class="contact-details">
+                        <h4>Email</h4>
+                        <p>contact@vulgatechafrique.org</p>
+                        <p>info@vulgatechafrique.org</p>
+                    </div>
+                </div>
+                
+                <div class="social-links">
+                    <a href="#" class="social-icon">📘</a>
+                    <a href="#" class="social-icon">💼</a>
+                    <a href="#" class="social-icon">📷</a>
+                    <a href="#" class="social-icon">🐦</a>
+                </div>
+            </div>
+            
+            <div class="contact-form">
+                <h3 style="color: #2c5530; margin-bottom: 20px;">Envoyez-nous un Message</h3>
+                <form>
+                    <div class="form-group">
+                        <label>Nom complet *</label>
+                        <input type="text" required placeholder="Votre nom">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Email *</label>
+                        <input type="email" required placeholder="votre@email.com">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Sujet</label>
+                        <input type="text" placeholder="Objet de votre message">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Message *</label>
+                        <textarea required placeholder="Votre message..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn-submit">Envoyer le Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>VulgaTECH Afrique</h3>
+                <p>Association à but non lucratif pour le développement rural par les TIC, l'énergie solaire et la conservation agricole.</p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Liens Rapides</h3>
+                <p><a href="#accueil">Accueil</a></p>
+                <p><a href="#mission">Notre Mission</a></p>
+                <p><a href="#villages">Villages</a></p>
+                <p><a href="#boutique">Boutique Solidaire</a></p>
+                <p><a href="#contact">Contact</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Actions</h3>
+                <p><a href="#don">Faire un Don</a></p>
+                <p><a href="#contact">Devenir Bénévole</a></p>
+                <p><a href="#contact">Partenariats</a></p>
+                <p><a href="#contact">Nous Rejoindre</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Informations Légales</h3>
+                <p><strong>IFU :</strong> [Votre numéro IFU]</p>
+                <p><strong>RCCM :</strong> [Votre RCCM]</p>
+                <p><a href="#">Mentions Légales</a></p>
+                <p><a href="#">Statuts Association</a></p>
+            </div>
+            
+            <div class="footer-section">
+                <h3>Suivez-Nous</h3>
+                <p><a href="#">Facebook</a></p>
+                <p><a href="#">LinkedIn</a></p>
+                <p><a href="#">Twitter</a></p>
+                <p><a href="#">Instagram</a></p>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>&copy; 2026 VulgaTECH Afrique. Tous droits réservés.</p>
+            <p style="margin-top: 10px; font-size: 14px;">
+                Connecter • Éclairer • Conserver - Transformer l'Afrique Rurale
+            </p>
+        </div>
+    </footer>
+    
+    <script>
+        function showCategory(category) {
+            // Cacher tous les produits
+            document.querySelectorAll('.category-content').forEach(el => {
+                el.style.display = 'none';
+            });
+            
+            // Retirer active de tous les onglets
+            document.querySelectorAll('.category-tab').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Afficher la catégorie sélectionnée
+            document.getElementById(category + '-products').style.display = 'grid';
+            
+            // Activer l'onglet cliqué
+            event.target.closest('.category-tab').classList.add('active');
+        }
+    </script>
+</body>
+</html>
