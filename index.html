@@ -1362,27 +1362,31 @@
             <div class="contact-form">
                 <h3 style="color: #2c5530; margin-bottom: 20px;">Envoyez-nous un Message</h3>
                 <form>
-                    <div class="form-group">
-                        <label>Nom complet *</label>
-                        <input type="text" required placeholder="Votre nom">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Email *</label>
-                        <input type="email" required placeholder="votre@email.com">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Sujet</label>
-                        <input type="text" placeholder="Objet de votre message">
-                    </div>
-                    
-                    <div class="form-group">
-                        <label>Message *</label>
-                        <textarea required placeholder="Votre message..."></textarea>
-                    </div>
-                    
-                    <button type="submit" class="btn-submit">Envoyer le Message</button>
+                  <form action="https://formspree.io/f/xqenarjo" method="POST">
+
+    <div class="form-group">
+        <label>Nom complet *</label>
+        <input type="text" name="name" required placeholder="Votre nom">
+    </div>
+
+    <div class="form-group">
+        <label>Email *</label>
+        <input type="email" name="email" required placeholder="votre@email.com">
+    </div>
+
+    <div class="form-group">
+        <label>Sujet</label>
+        <input type="text" name="subject" placeholder="Objet de votre message">
+    </div>
+
+    <div class="form-group">
+        <label>Message *</label>
+        <textarea name="message" required placeholder="Votre message..."></textarea>
+    </div>
+
+    <button type="submit" class="btn-submit">Envoyer le Message</button>
+
+</form>
                 </form>
             </div>
         </div>
